@@ -23,7 +23,16 @@ const Portfolio: FC = memo(() => {
                   className={classNames(
                     'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
                   )}>
-                  <Image alt={title} className="h-full w-full" placeholder="blur" src={image} />
+                  {/* ✅ Only render Image if image exists */}
+                  {image && (
+                    <Image 
+                      alt={title} 
+                      src={image} 
+                      width={600} // ✅ Set width
+                      height={400} // ✅ Set height
+                      className="h-full w-full"
+                    />
+                  )}
                   <ItemOverlay item={item} />
                 </div>
               </div>
@@ -44,7 +53,6 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    // Avoid hydration styling errors by setting mobile in useEffect
     if (isMobile) {
       setMobile(true);
     }
@@ -64,14 +72,15 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
   return (
     <a
       className={classNames(
-        'absolute inset-0 h-full w-full  bg-gray-900 transition-all duration-300',
+        'absolute inset-0 h-full w-full bg-gray-900 transition-all duration-300',
         {'opacity-0 hover:opacity-80': !mobile},
         showOverlay ? 'opacity-80' : 'opacity-0',
       )}
       href={url}
       onClick={handleItemClick}
       ref={linkRef}
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer">
       <div className="relative h-full w-full p-4">
         <div className="flex h-full w-full flex-col gap-y-2 overflow-y-auto overscroll-contain">
           <h2 className="text-center font-bold text-white opacity-100">{title}</h2>

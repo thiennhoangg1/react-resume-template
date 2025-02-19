@@ -1,51 +1,32 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-}
-
-@supports (-webkit-touch-callout: none) {
-  .h-screen {
-    height: -webkit-fill-available;
-  }
-}
-
 /* Global styles */
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 html {
-  -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
   height: 100vh;
 }
 
 body {
-  position: relative;
-  width: 100%;
-  color: #444444;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;
-  background-color: #fafafa;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-td,
-th {
-  padding: 4px 8px 4px 4px;
-  text-align: left;
+/* Light mode */
+.text-light {
+  color: #222; /* Darker text for readability */
 }
 
-th {
-  font-weight: 600;
+/* Dark mode */
+.dark .text-light {
+  color: #ddd; /* Softer contrast for readability */
+}
+
+.dark .text-bold {
+  font-weight: 700;
+}
+
+/* Fix navbar links */
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.dark .nav-link {
+  color: white;
 }

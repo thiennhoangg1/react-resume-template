@@ -1,38 +1,18 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,css,scss}'],
-  // darkMode: 'media', // or 'media' or 'class'
+  darkMode: 'class', // Use class-based dark mode
   theme: {
     extend: {
       colors: {
-        yellow: '#efc603',
-      },
-      keyframes: {
-        typing: {
-          '0%, 100%': {width: '0%'},
-          '30%, 70%': {width: '100%'},
-        },
-        blink: {
-          '0%': {
-            opacity: 0,
-          },
-        },
-        'rotate-loader': {
-          '0%': {
-            transform: 'rotate(0deg)',
-            strokeDashoffset: '360%',
-          },
-          '100%': {
-            transform: 'rotate(360deg)',
-            strokeDashoffset: '-360%',
-          },
-        },
-      },
-      screens: {
-        touch: {raw: 'only screen and (pointer: coarse)'},
+        darkBlue: '#0A192F',
+        lightBlue: '#112240',
+        offWhite: '#f8f9fa',
+        textDark: '#333',
+        textLight: '#ffffff',
+        accent: '#ff6600',
       },
     },
   },
-  // eslint-disable-next-line no-undef
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
